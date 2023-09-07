@@ -21,7 +21,8 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    orders_of_500 = Order.where("orders.amount = 500")
+    orders_of_200 = Order.where("orders.amount = 200")
     # ------------------------------------------------------------
 
     # Expectation
@@ -36,6 +37,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    order_id = Order.order(:amount).pluck(:id).first
     # Your solution should not contain the actual ID of the order anywhere.
     # ------------------------------------------------------------
 
@@ -50,6 +52,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    order_id = Order.order(:amount).pluck(:id).last
     # Your solution should not contain the ID of the order anywhere
     # ------------------------------------------------------------
 
@@ -70,6 +73,9 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders_of_500_and_700 = Order.where("orders.amount = ? OR orders.amount = ?", 500, 700)
+    
+    orders_of_700_and_1000 = Order.where("orders.amount = ? OR orders.amount = ?", 700, 1000)
     # ------------------------------------------------------------
 
     # Expectation
@@ -87,6 +93,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    items = Item.where(id: ids_to_find)
     # ------------------------------------------------------------
 
     # Expectation
@@ -102,6 +109,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders = Order.where(id: ids_to_find)
     # ------------------------------------------------------------
 
     # Expectation
@@ -116,6 +124,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders_between_700_and_100 = Order.where("orders.amount > ? AND orders.amount < ?", 700, 1000)
     # ------------------------------------------------------------
 
     # Expectation
@@ -131,6 +140,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders_less_than_550 = Order.where("orders.amount < ?", 550)
     # ------------------------------------------------------------
 
     # Expectation
